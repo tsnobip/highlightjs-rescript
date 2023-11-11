@@ -1,0 +1,12 @@
+<span class="hljs-keyword">let</span> decode <span class="hljs-operator">=</span> json <span class="hljs-title function_">=&gt;</span> {
+  <span class="hljs-title class_">Json</span>.<span class="hljs-title class_">Decode</span>.query: json<span class="hljs-operator">-&gt;</span>field(<span class="hljs-string">&quot;query&quot;</span>, string),
+  cacheKey: json<span class="hljs-operator">-&gt;</span>field(<span class="hljs-string">&quot;cacheKey&quot;</span>, string),
+  desc: json<span class="hljs-operator">-&gt;</span>field(<span class="hljs-string">&quot;desc&quot;</span>, string),
+  lambda: json<span class="hljs-operator">-&gt;</span>field(<span class="hljs-string">&quot;lambda&quot;</span>, string),
+}
+
+<span class="hljs-keyword">let</span> value <span class="hljs-operator">=</span> <span class="hljs-title class_">Some</span>.<span class="hljs-title class_">Bucket</span>.<span class="hljs-title class_">Of</span>.stuff()
+
+<span class="hljs-keyword">module</span> <span class="hljs-keyword">type</span> <span class="hljs-title class_">RewiredModule</span> = {
+  <span class="hljs-keyword">type</span> t <span class="hljs-operator">=</span> {name: string}
+}

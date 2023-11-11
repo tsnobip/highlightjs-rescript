@@ -1,0 +1,49 @@
+<span class="hljs-attribute">@@jsxConfig({ version: 4, mode: &quot;automatic&quot; })</span>
+
+<span class="hljs-keyword">module</span> <span class="hljs-title class_">CounterMessage</span> = {
+  <span class="hljs-attribute">@react.component</span>
+  <span class="hljs-keyword">let</span> make <span class="hljs-operator">=</span> (~count, ~username<span class="hljs-operator">=</span>?) <span class="hljs-title function_">=&gt;</span> {
+    <span class="hljs-keyword">let</span> times <span class="hljs-operator">=</span> <span class="hljs-keyword">switch</span> count {
+    | <span class="hljs-number">1</span> <span class="hljs-title function_">=&gt;</span> <span class="hljs-string">&quot;once&quot;</span>
+    | <span class="hljs-number">2</span> <span class="hljs-title function_">=&gt;</span> <span class="hljs-string">&quot;twice&quot;</span>
+    | n <span class="hljs-title function_">=&gt;</span> <span class="hljs-title class_">Belt</span>.<span class="hljs-title class_">Int</span>.toString(n) <span class="hljs-operator">++</span> <span class="hljs-string">&quot; times&quot;</span>
+    }
+
+    <span class="hljs-keyword">let</span> name <span class="hljs-operator">=</span> <span class="hljs-keyword">switch</span> username {
+    | <span class="hljs-symbol">Some</span>(<span class="hljs-string">&quot;&quot;</span>) <span class="hljs-title function_">=&gt;</span> <span class="hljs-string">&quot;Anonymous&quot;</span>
+    | <span class="hljs-symbol">Some</span>(name) <span class="hljs-title function_">=&gt;</span> name
+    | <span class="hljs-symbol">None</span> <span class="hljs-title function_">=&gt;</span> <span class="hljs-string">&quot;Anonymous&quot;</span>
+    }
+
+    &lt;<span class="hljs-tag">div</span>&gt; {<span class="hljs-title class_">React</span>.string(<span class="hljs-string">`Hello <span class="hljs-subst">${name}</span>, you clicked me `</span> <span class="hljs-operator">++</span> times)} &lt;/<span class="hljs-tag">div</span>&gt;
+  }
+}
+
+<span class="hljs-keyword">module</span> <span class="hljs-title class_">App</span> = {
+  <span class="hljs-attribute">@react.component</span>
+  <span class="hljs-keyword">let</span> make <span class="hljs-operator">=</span> () <span class="hljs-title function_">=&gt;</span> {
+    <span class="hljs-keyword">let</span> (count, setCount) <span class="hljs-operator">=</span> <span class="hljs-title class_">React</span>.useState(() <span class="hljs-title function_">=&gt;</span> <span class="hljs-number">0</span>)
+    <span class="hljs-keyword">let</span> (username, setUsername) <span class="hljs-operator">=</span> <span class="hljs-title class_">React</span>.useState(() <span class="hljs-title function_">=&gt;</span> <span class="hljs-string">&quot;Anonymous&quot;</span>)
+
+    &lt;<span class="hljs-tag">div</span>&gt;
+      {<span class="hljs-title class_">React</span>.string(<span class="hljs-string">&quot;Username: &quot;</span>)}
+      &lt;<span class="hljs-tag">input</span>
+        type_<span class="hljs-operator">=</span><span class="hljs-string">&quot;text&quot;</span>
+        value<span class="hljs-operator">=</span>{username}
+        onChange<span class="hljs-operator">=</span>{evt <span class="hljs-title function_">=&gt;</span> {
+          evt<span class="hljs-operator">-&gt;</span><span class="hljs-title class_">ReactEvent</span>.<span class="hljs-title class_">Form</span>.preventDefault
+          <span class="hljs-keyword">let</span> username <span class="hljs-operator">=</span> (evt<span class="hljs-operator">-&gt;</span><span class="hljs-title class_">ReactEvent</span>.<span class="hljs-title class_">Form</span>.target)<span class="hljs-literal">[</span><span class="hljs-string">&quot;value&quot;</span><span class="hljs-literal">]</span>
+          setUsername(_prev <span class="hljs-title function_">=&gt;</span> username)
+        }}
+      /&gt;
+      &lt;<span class="hljs-tag">button</span>
+        onClick<span class="hljs-operator">=</span>{_evt <span class="hljs-title function_">=&gt;</span> {
+          setCount(prev <span class="hljs-title function_">=&gt;</span> prev <span class="hljs-operator">+</span> <span class="hljs-number">1</span>)
+        }}&gt;
+        {<span class="hljs-title class_">React</span>.string(<span class="hljs-string">&quot;Click me&quot;</span>)}
+      &lt;/<span class="hljs-tag">button</span>&gt;
+      &lt;<span class="hljs-tag">button</span> onClick<span class="hljs-operator">=</span>{_evt <span class="hljs-title function_">=&gt;</span> setCount(_ <span class="hljs-title function_">=&gt;</span> <span class="hljs-number">0</span>)}&gt; {<span class="hljs-title class_">React</span>.string(<span class="hljs-string">&quot;Reset&quot;</span>)} &lt;/<span class="hljs-tag">button</span>&gt;
+      &lt;<span class="hljs-title class_">CounterMessage</span> count username /&gt;
+    &lt;/<span class="hljs-tag">div</span>&gt;
+  }
+}

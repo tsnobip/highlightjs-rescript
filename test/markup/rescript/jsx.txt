@@ -1,0 +1,49 @@
+@@jsxConfig({ version: 4, mode: "automatic" })
+
+module CounterMessage = {
+  @react.component
+  let make = (~count, ~username=?) => {
+    let times = switch count {
+    | 1 => "once"
+    | 2 => "twice"
+    | n => Belt.Int.toString(n) ++ " times"
+    }
+
+    let name = switch username {
+    | Some("") => "Anonymous"
+    | Some(name) => name
+    | None => "Anonymous"
+    }
+
+    <div> {React.string(`Hello ${name}, you clicked me ` ++ times)} </div>
+  }
+}
+
+module App = {
+  @react.component
+  let make = () => {
+    let (count, setCount) = React.useState(() => 0)
+    let (username, setUsername) = React.useState(() => "Anonymous")
+
+    <div>
+      {React.string("Username: ")}
+      <input
+        type_="text"
+        value={username}
+        onChange={evt => {
+          evt->ReactEvent.Form.preventDefault
+          let username = (evt->ReactEvent.Form.target)["value"]
+          setUsername(_prev => username)
+        }}
+      />
+      <button
+        onClick={_evt => {
+          setCount(prev => prev + 1)
+        }}>
+        {React.string("Click me")}
+      </button>
+      <button onClick={_evt => setCount(_ => 0)}> {React.string("Reset")} </button>
+      <CounterMessage count username />
+    </div>
+  }
+}

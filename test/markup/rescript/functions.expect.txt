@@ -1,0 +1,28 @@
+<span class="hljs-comment">/* This is a simple function */</span>
+<span class="hljs-keyword">let</span> greet <span class="hljs-operator">=</span> name <span class="hljs-title function_">=&gt;</span> <span class="hljs-string">&quot;Hello World&quot;</span>
+
+<span class="hljs-keyword">let</span> body <span class="hljs-operator">=</span> <span class="hljs-symbol">#Plain</span>(
+  <span class="hljs-string">`uploaded <span class="hljs-subst">${cacheServiceConfig.desc}</span> configuration data into cache on S3`</span>,
+)
+
+<span class="hljs-keyword">let</span> getCacheConfigByEnv <span class="hljs-operator">=</span> (
+  environment: environment,
+  cacheServiceConfig: <span class="hljs-title class_">Dict</span>.t&lt;<span class="hljs-tag">cachingServiceConfig</span>&gt;,
+) <span class="hljs-title function_">=&gt;</span>
+  <span class="hljs-keyword">switch</span> cacheServiceConfig {
+  | <span class="hljs-symbol">Some</span>(config) <span class="hljs-title function_">=&gt;</span> config
+  | <span class="hljs-symbol">None</span> <span class="hljs-title function_">=&gt;</span>
+    raise(<span class="hljs-symbol">InvalidEnvironment</span>(<span class="hljs-string">&quot;Caching Service Coinfiguration is missing&quot;</span>))
+  }
+
+<span class="hljs-keyword">let</span> readCacheServiceConfigAndDecode <span class="hljs-operator">=</span> configJson <span class="hljs-title function_">=&gt;</span>
+  <span class="hljs-keyword">switch</span> configJson<span class="hljs-operator">-&gt;</span><span class="hljs-title class_">Json</span>.decodeObject {
+  | <span class="hljs-symbol">None</span> <span class="hljs-title function_">=&gt;</span> raise(<span class="hljs-title class_">Json</span>.<span class="hljs-title class_">Decode</span>.<span class="hljs-symbol">DecodeError</span>(<span class="hljs-string">&quot;Invalid Cache Config&quot;</span>))
+  | <span class="hljs-symbol">Some</span>(data) <span class="hljs-title function_">=&gt;</span> data<span class="hljs-operator">-&gt;</span><span class="hljs-title class_">Dict</span>.map(json <span class="hljs-title function_">=&gt;</span> <span class="hljs-title class_">CachingServiceConfig</span>.decode(json))
+  }
+
+<span class="hljs-keyword">let</span> ofSyntax <span class="hljs-operator">=</span> s <span class="hljs-title function_">=&gt;</span>
+  <span class="hljs-keyword">switch</span> s {
+  | <span class="hljs-symbol">OCaml</span> <span class="hljs-title function_">=&gt;</span> <span class="hljs-string">&quot;OCaml&quot;</span>
+  | <span class="hljs-symbol">ReScript</span> <span class="hljs-title function_">=&gt;</span> <span class="hljs-string">&quot;ReScript&quot;</span>
+  }

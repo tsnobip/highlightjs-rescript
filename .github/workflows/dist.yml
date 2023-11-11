@@ -1,0 +1,56 @@
+name: Distribution
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Checkout highlight.js repo
+        uses: actions/checkout@v3
+        with:
+          repository: highlightjs/highlight.js
+          path: highlight.js
+
+      - name: Checkout highlightjs-rescript repo
+        uses: actions/checkout@v3
+        with:
+          path: highlightjs-rescript
+
+      - name: Install dependencies for highlight.js
+        working-directory: ./highlight.js
+        run: npm ci
+
+      - name: Symlink highlightjs-rescript repo
+        working-directory: ./highlight.js/extra
+        run: ln -s ../../highlightjs-rescript .
+
+      - name: Clean previous distributable package
+        working-directory: ./highlightjs-rescript
+        run: rm -rf dist/*
+
+      - name: Build distributable package
+        working-directory: ./highlight.js
+        run: node ./tools/build.js -t cdn
+
+      - name: Commit distributable package
+        continue-on-error: true
+        working-directory: ./highlightjs-rescript
+        run: |
+          # git config --local user.email "$(git log --format='%ae' HEAD^!)"
+          # git config --local user.name "$(git log --format='%an' HEAD^!)"
+
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add dist
+          git commit -m "Update dist package"
+          git push

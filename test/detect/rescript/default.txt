@@ -1,0 +1,50 @@
+/* This is a
+   multiline
+   comment */
+
+/**
+	this is documentation
+*/
+type point = {
+  x: float,
+  y?: float,
+}
+
+let someString = "this is a string"
+let someOtherString = `and what about this? ${someString}`
+
+let rec length = lst =>
+  switch lst {
+  | list{} => 0
+  | list{_, ...tail} => 1 + length(tail)
+  }
+
+let arr = [1, 2, 3]
+
+type result<'a, 'b> =
+  | Ok('a)
+  | Error('b)
+
+let promisify = (res: result<'a, 'b>, ~flag as _=?): promise<'a> =>
+  switch res {
+  | Ok(a) => Promise.resolve(a)
+  | Error(b) => Promise.reject(b)
+  }
+
+exception Test
+
+module MakeFFI = (
+  T: {
+    type t
+  },
+) => {
+  @module external ffi: string => T.t = "something"
+}
+
+type rec expression =
+  | Const(float)
+  | Var(string)
+  | Sum(expression, expression) /* e1 + e2 */
+  | Diff(expression, expression) /* e1 - e2 */
+  | Prod(expression, expression) /* e1 * e2 */
+  | Quot(expression, expression) /* e1 / e2 */

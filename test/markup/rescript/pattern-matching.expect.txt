@@ -1,0 +1,10 @@
+<span class="hljs-keyword">let</span> message <span class="hljs-operator">=</span> <span class="hljs-keyword">switch</span> person1 {
+| <span class="hljs-title class_">School</span>.<span class="hljs-symbol">Teacher</span> <span class="hljs-title function_">=&gt;</span> <span class="hljs-string">&quot;Hello teacher!&quot;</span>
+| <span class="hljs-title class_">School</span>.<span class="hljs-symbol">Director</span> <span class="hljs-title function_">=&gt;</span> <span class="hljs-string">&quot;Hello director!&quot;</span>
+}
+
+<span class="hljs-keyword">let</span> readCacheServiceConfigAndDecode <span class="hljs-operator">=</span> configJson <span class="hljs-title function_">=&gt;</span>
+  <span class="hljs-keyword">switch</span> configJson<span class="hljs-operator">-&gt;</span><span class="hljs-title class_">Json</span>.decodeObject {
+  | <span class="hljs-symbol">None</span> <span class="hljs-title function_">=&gt;</span> raise(<span class="hljs-title class_">Json</span>.<span class="hljs-title class_">Decode</span>.<span class="hljs-symbol">DecodeError</span>(<span class="hljs-string">&quot;Invalid Cache Config&quot;</span>))
+  | <span class="hljs-symbol">Some</span>(data) <span class="hljs-title function_">=&gt;</span> data<span class="hljs-operator">-&gt;</span><span class="hljs-title class_">Dict</span>.map(json <span class="hljs-title function_">=&gt;</span> <span class="hljs-title class_">CachingServiceConfig</span>.decode(json))
+  }

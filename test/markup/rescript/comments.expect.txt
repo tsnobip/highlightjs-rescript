@@ -1,0 +1,13 @@
+<span class="hljs-keyword">let</span> t <span class="hljs-operator">=</span> <span class="hljs-number">2</span> <span class="hljs-comment">// Line comment</span>
+
+<span class="hljs-comment">/* Regular comment */</span>
+<span class="hljs-keyword">let</span> t <span class="hljs-operator">=</span> <span class="hljs-number">2</span>
+
+<span class="hljs-comment">/**
+ docstring
+*/</span>
+<span class="hljs-keyword">type</span> t <span class="hljs-operator">=</span>
+  | <span class="hljs-symbol">A</span>(string)
+  | <span class="hljs-symbol">B</span>(int)
+<span class="hljs-comment">/* A(&quot;foo&quot;) -&gt; { TAG: 0, _0: &quot;Foo&quot; } */</span>
+<span class="hljs-comment">/* B(2) -&gt; { TAG: 1, _0: 2 } */</span>
