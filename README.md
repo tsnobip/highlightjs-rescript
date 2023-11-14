@@ -1,6 +1,6 @@
 # highlightjs-rescript
 
-[ReEscript](https://rescript-lang.org/) programming language grammar for Highlight.js
+[ReScript](https://rescript-lang.org/) programming language grammar for Highlight.js
 
 ## Usage
 
