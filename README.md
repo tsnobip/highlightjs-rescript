@@ -14,7 +14,7 @@ This module is just a CDN build of the language, so it will register itself as t
 ></script>
 <script
   type="text/javascript"
-  src="https://unpkg.com/highlightjs-rescript@0.1.1/dist/rescript.min.js"
+  src="https://unpkg.com/highlightjs-rescript@0.1.2/dist/rescript.min.js"
 ></script>
 <script type="text/javascript">
   hljs.highlightAll();
