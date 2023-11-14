@@ -9,6 +9,12 @@
 > - :house: [Internal]
 > - :nail_care: [Polish]
 
+# 0.1.2
+
+#### :bug: Bug Fix
+
+- Fix files published in package again!
+
 # 0.1.1
 
 #### :bug: Bug Fix
