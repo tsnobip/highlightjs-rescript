@@ -22,8 +22,8 @@
   "main": "src/languages/rescript.js",
   "type": "module",
   "files": [
-    "src/languages/rescript.es.min.js",
-    "src/languages/rescript.min.js"
+    "dist/rescript.es.min.js",
+    "dist/rescript.min.js"
   ],
   "devDependencies": {
     "chai": "^4.3.10",
