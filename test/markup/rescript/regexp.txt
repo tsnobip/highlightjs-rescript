@@ -1,0 +1,3 @@
+let foo = %re("/hello/")
+
+let bar = %re(`%?%[\.|\w]+\(`)

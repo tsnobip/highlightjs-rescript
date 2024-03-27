@@ -72,6 +72,24 @@ export default function (hljs) {
     contains: ["self"].concat(SUBST_INTERNALS),
   });
 
+  const REGEXP_MODE = {
+    scope: "regexp",
+    variants: [
+      {
+        begin: /%re\(`/,
+        end: /\s*`\)/,
+        excludeBegin: true,
+        excludeEnd: true,
+      },
+      {
+        begin: /%re\("/,
+        end: /"\)/,
+        excludeBegin: true,
+        excludeEnd: true,
+      },
+    ],
+  };
+
   const RAW_MODE = {
     variants: [
       {
@@ -340,10 +358,6 @@ export default function (hljs) {
         begin: "@@?(" + RE_ATTRIBUTE + ")",
       },
       {
-        begin: "%%?(" + RE_ATTRIBUTE + ")\\(",
-        end: "\\s*\\)",
-      },
-      {
         begin: "%%?(" + RE_ATTRIBUTE + ")",
       },
     ],
@@ -367,6 +381,7 @@ export default function (hljs) {
       // and a block {} can be considered the same for highlighting
       CHARACTER_MODE,
       ESCAPE_CHARACTER_MODE,
+      REGEXP_MODE,
       RAW_MODE,
       GRAPHQL_MODE,
       EXTENSION_MODE,
