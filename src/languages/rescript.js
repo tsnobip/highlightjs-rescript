@@ -76,7 +76,7 @@ export default function (hljs) {
     variants: [
       {
         begin: /%?%raw\(`/,
-        end: /`\)/,
+        end: /\s*`\)/,
         excludeBegin: true,
         excludeEnd: true,
         subLanguage: "javascript",
@@ -95,14 +95,14 @@ export default function (hljs) {
     variants: [
       {
         begin: /%?%relay\(`/,
-        end: /`\)/,
+        end: /\s*`\)/,
         excludeBegin: true,
         excludeEnd: true,
         subLanguage: "graphql",
       },
       {
         begin: /%?%graphql\(`/,
-        end: /`\)/,
+        end: /\s*`\)/,
         excludeBegin: true,
         excludeEnd: true,
         subLanguage: "graphql",
