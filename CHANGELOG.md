@@ -9,6 +9,12 @@
 > - :house: [Internal]
 > - :nail_care: [Polish]
 
+# 0.2.1
+
+#### :bug: Bug Fix
+
+- update github action setup-node to v4 and node v20 to fix publish script
+
 # 0.2.0
 
 #### :bug: Bug Fix
