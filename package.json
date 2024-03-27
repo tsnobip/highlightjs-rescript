@@ -1,6 +1,6 @@
 {
   "name": "highlightjs-rescript",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "highlight.js syntax definition for ReScript programming language",
   "keywords": [
     "rescript",

@@ -9,6 +9,14 @@
 > - :house: [Internal]
 > - :nail_care: [Polish]
 
+# 0.3.0 - unreleased
+
+# 0.2.2
+
+#### :bug: Bug Fix
+
+- fix version again so it can be published on NPM
+
 # 0.2.1
 
 #### :bug: Bug Fix
