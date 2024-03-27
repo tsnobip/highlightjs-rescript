@@ -1,0 +1,17 @@
+<span class="hljs-keyword">module</span> <span class="hljs-title class_">Presign</span> = %relay(`<span class="language-graphql">
+<span class="hljs-keyword">mutation</span> S3PresignUrlMutation<span class="hljs-punctuation">(</span><span class="hljs-variable">$sha256</span>: String<span class="hljs-punctuation">!</span>, <span class="hljs-variable">$size</span>: Int<span class="hljs-punctuation">!</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+  presignS3UploadUrl<span class="hljs-punctuation">(</span><span class="hljs-symbol">input</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> <span class="hljs-symbol">sha256</span><span class="hljs-punctuation">:</span> <span class="hljs-variable">$sha256</span>, <span class="hljs-symbol">size</span><span class="hljs-punctuation">:</span> <span class="hljs-variable">$size</span> <span class="hljs-punctuation">}</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+    __typename
+    <span class="hljs-punctuation">...</span> <span class="hljs-keyword">on</span> PresignS3UploadUrlError <span class="hljs-punctuation">{</span>
+      kind
+      message
+    <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">...</span> <span class="hljs-keyword">on</span> PresignS3UploadUrlOk <span class="hljs-punctuation">{</span>
+      id
+      presignedUploadUrl
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</span>`)
+
+<span class="hljs-title class_">Console</span>.log(add(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>))

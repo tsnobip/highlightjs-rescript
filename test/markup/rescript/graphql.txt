@@ -1,0 +1,17 @@
+module Presign = %relay(`
+mutation S3PresignUrlMutation($sha256: String!, $size: Int!) {
+  presignS3UploadUrl(input: { sha256: $sha256, size: $size }) {
+    __typename
+    ... on PresignS3UploadUrlError {
+      kind
+      message
+    }
+    ... on PresignS3UploadUrlOk {
+      id
+      presignedUploadUrl
+    }
+  }
+}
+`)
+
+Console.log(add(1, 2))

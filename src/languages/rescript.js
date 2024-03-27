@@ -91,6 +91,25 @@ export default function (hljs) {
     ],
   };
 
+  const GRAPHQL_MODE = {
+    variants: [
+      {
+        begin: /%?%relay\(`/,
+        end: /`\)/,
+        excludeBegin: true,
+        excludeEnd: true,
+        subLanguage: "graphql",
+      },
+      {
+        begin: /%?%graphql\(`/,
+        end: /`\)/,
+        excludeBegin: true,
+        excludeEnd: true,
+        subLanguage: "graphql",
+      },
+    ],
+  };
+
   const STRING_MODE = {
     scope: "string",
     variants: [
@@ -330,6 +349,7 @@ export default function (hljs) {
       CHARACTER_MODE,
       ESCAPE_CHARACTER_MODE,
       RAW_MODE,
+      GRAPHQL_MODE,
       STRING_MODE,
       TEMPLATE_STRING_MODE,
       FUNCTION_MODE,
