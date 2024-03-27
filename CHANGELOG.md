@@ -9,6 +9,12 @@
 > - :house: [Internal]
 > - :nail_care: [Polish]
 
+# 0.2.0
+
+#### :bug: Bug Fix
+
+- Fix highlighting of extension point (%raw, %re, %%private, etc...)
+
 # 0.1.2
 
 #### :bug: Bug Fix
