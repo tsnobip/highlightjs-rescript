@@ -110,6 +110,25 @@ export default function (hljs) {
     ],
   };
 
+  const EXTENSION_MODE = {
+    variants: [
+      {
+        begin: /%?%[\.|\w]+\(`/,
+        end: /\s*`\)/,
+        excludeBegin: true,
+        excludeEnd: true,
+        subLanguage: [],
+      },
+      {
+        begin: /%?%\w+\("/,
+        end: /"\)/,
+        excludeBegin: true,
+        excludeEnd: true,
+        subLanguage: [],
+      },
+    ],
+  };
+
   const STRING_MODE = {
     scope: "string",
     variants: [
@@ -350,6 +369,7 @@ export default function (hljs) {
       ESCAPE_CHARACTER_MODE,
       RAW_MODE,
       GRAPHQL_MODE,
+      EXTENSION_MODE,
       STRING_MODE,
       TEMPLATE_STRING_MODE,
       FUNCTION_MODE,

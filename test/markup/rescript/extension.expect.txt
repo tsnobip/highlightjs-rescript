@@ -1,0 +1,8 @@
+<span class="hljs-comment">// SomeFile.res</span>
+<span class="hljs-keyword">let</span> myThing <span class="hljs-operator">=</span> %generated.css(`<span class="language-css">
+  <span class="hljs-selector-class">.button</span> {
+    <span class="hljs-attribute">color</span>: blue;
+  }</span>
+`)
+
+<span class="hljs-title class_">Console</span>.log(add(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>))

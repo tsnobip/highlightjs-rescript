@@ -1,0 +1,8 @@
+// SomeFile.res
+let myThing = %generated.css(`
+  .button {
+    color: blue;
+  }
+`)
+
+Console.log(add(1, 2))
