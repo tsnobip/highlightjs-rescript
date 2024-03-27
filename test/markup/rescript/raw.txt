@@ -1,0 +1,20 @@
+%%raw(`
+// look ma, regular JavaScript!
+var message = `hello`;
+function greet(m) {
+  console.log(m)
+}
+`)
+
+%%raw(`function bar(a,b){ return a+b }`)
+
+%%raw("function bar(a,b){ return a+b }")
+
+let add = %raw(`
+  function(a, b) {
+    console.log("hello from raw JavaScript!");
+    return a + b
+  }
+`)
+
+Console.log(add(1, 2))

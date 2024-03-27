@@ -72,6 +72,25 @@ export default function (hljs) {
     contains: ["self"].concat(SUBST_INTERNALS),
   });
 
+  const RAW_MODE = {
+    variants: [
+      {
+        begin: /%?%raw\(`/,
+        end: /`\)/,
+        excludeBegin: true,
+        excludeEnd: true,
+        subLanguage: "javascript",
+      },
+      {
+        begin: /%?%raw\("/,
+        end: /"\)/,
+        excludeBegin: true,
+        excludeEnd: true,
+        subLanguage: "javascript",
+      },
+    ],
+  };
+
   const STRING_MODE = {
     scope: "string",
     variants: [
@@ -310,6 +329,7 @@ export default function (hljs) {
       // and a block {} can be considered the same for highlighting
       CHARACTER_MODE,
       ESCAPE_CHARACTER_MODE,
+      RAW_MODE,
       STRING_MODE,
       TEMPLATE_STRING_MODE,
       FUNCTION_MODE,
